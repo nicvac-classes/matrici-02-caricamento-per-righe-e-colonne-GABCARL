@@ -1,44 +1,47 @@
-public class UtilsMatrice {
-    
-    // Per matrici int
-    public static void visualizza(int[][] matrice) {
-        if (matrice == null || matrice.length == 0) {
-            System.out.println("Matrice vuota");
-            return;
-        }
-        for (int i = 0; i < matrice.length; i++) {
-            for (int j = 0; j < matrice[i].length; j++) {
-                System.out.printf("%4d ", matrice[i][j]);
+public class Esercizio {
+
+    public static void riempiPerRighe(int[][] M, int righe, int colonne) {
+        int c = 1;
+        int i = 0;
+        while(i < righe){
+            int j = 0;
+            while(j < colonne){
+                M[i][j] = c;
+                ++c;
+                ++j;
             }
-            System.out.println();
+            ++i;
         }
     }
-    
-    // Per matrici double
-    public static void visualizza(double[][] matrice) {
-        if (matrice == null || matrice.length == 0) {
-            System.out.println("Matrice vuota");
-            return;
-        }
-        for (int i = 0; i < matrice.length; i++) {
-            for (int j = 0; j < matrice[i].length; j++) {
-                System.out.printf("%7.2f ", matrice[i][j]);
+
+    public static void riempiPerColonne(int[][] M, int righe, int colonne) {
+        int c = 1;
+        int j = 0;
+        while(j < colonne){
+            int i = 0;
+            while(i < righe){
+                M[i][j] = c;
+                ++c;
+                ++i;
             }
-            System.out.println();
+            ++j;
         }
     }
-    
-    // Per matrici di oggetti (Integer, Double, String, ecc.)
-    public static <T> void visualizza(T[][] matrice) {
-        if (matrice == null || matrice.length == 0) {
-            System.out.println("Matrice vuota");
-            return;
-        }
-        for (int i = 0; i < matrice.length; i++) {
-            for (int j = 0; j < matrice[i].length; j++) {
-                System.out.printf("%10s ", matrice[i][j]);
-            }
-            System.out.println();
-        }
+
+    public static void main(String[] args) {
+        
+        int righe = 5;
+        int colonne = 5;
+
+        int[][] matricePerRighe = new int[righe][colonne];
+        int[][] matricePerColonne = new int[righe][colonne];
+
+        System.out.println("Per righe");
+        riempiPerRighe(matricePerRighe, righe, colonne);
+        UtilsMatrice.visualizza(matricePerRighe);
+
+        System.out.println("Per colonne: ");
+        riempiPerColonne(matricePerColonne, righe, colonne);
+        UtilsMatrice.visualizza(matricePerColonne);
     }
 }
